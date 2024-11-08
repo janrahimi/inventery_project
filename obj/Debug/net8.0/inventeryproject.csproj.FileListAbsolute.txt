@@ -12,3 +12,4 @@ C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\refi
 C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\inventeryproject.pdb
 C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\inventeryproject.genruntimeconfig.cache
 C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\ref\inventeryproject.dll
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\inventeryproject.sourcelink.json
