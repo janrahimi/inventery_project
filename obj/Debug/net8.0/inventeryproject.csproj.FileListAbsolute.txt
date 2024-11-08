@@ -1,0 +1,14 @@
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\bin\Debug\net8.0\inventeryproject.exe
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\bin\Debug\net8.0\inventeryproject.deps.json
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\bin\Debug\net8.0\inventeryproject.runtimeconfig.json
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\bin\Debug\net8.0\inventeryproject.dll
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\bin\Debug\net8.0\inventeryproject.pdb
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\inventeryproject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\inventeryproject.AssemblyInfoInputs.cache
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\inventeryproject.AssemblyInfo.cs
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\inventeryproject.csproj.CoreCompileInputs.cache
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\inventeryproject.dll
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\refint\inventeryproject.dll
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\inventeryproject.pdb
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\inventeryproject.genruntimeconfig.cache
+C:\Users\rahimi.john10\OneDrive\Skrivbord\inventeryproject\obj\Debug\net8.0\ref\inventeryproject.dll
