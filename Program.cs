@@ -110,6 +110,30 @@ namespace InventoryManagementSystem
         public String Name{get;set;}
         public String Email{get;set;}
 
+        public Customer(int Id, String Name, String Email){
+            this.Id= Id;
+            this.Name = Name;
+            this.Email = Email;
+        }
+    }
+
+    public class Order{
+        public int Id{get; set;}
+        public Customer Customer{get; set;}
+        public List<OrderItems>Items {get; set;}
+
+        public Order(int Id, Customer customer){
+            Id = id;
+            Customer = customer;
+            Items = new List<OrderItems>();
+        }
+
+        public void AddItem(OrderItem item){
+            Items.Add(item);
+        }
+
+
+
     }
 
 
