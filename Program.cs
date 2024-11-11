@@ -5,6 +5,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Reflection.Metadata;
+using InventoryManagementSystem;
 
 namespace InventoryManagementSystem
 {
@@ -123,17 +124,37 @@ namespace InventoryManagementSystem
         public List<OrderItems>Items {get; set;}
 
         public Order(int Id, Customer customer){
-            Id = id;
-            Customer = customer;
-            Items = new List<OrderItems>();
+            this.Id = id;
+            this.Customer = customer;
+            this.Items = new List<OrderItems>();
         }
 
         public void AddItem(OrderItem item){
             Items.Add(item);
         }
 
+    }
+
+    // order item class
+
+    public class OrderItem{
+        public Product product{get; set;}
+        public int Quantity{get;set;}
 
 
+        public OrderItem(Product product, int Quantity){
+            this.product = product;
+            this.Quantity = Quantity;
+        }
+        
+
+    }
+
+    // inventery class
+
+    public class Inventory{
+        public List<StockItem>StockItemsItems = new <StockItem>();
+        public List<Transaction>Transactions = new <Transaction>();
     }
 
 
