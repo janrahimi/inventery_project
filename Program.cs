@@ -22,11 +22,24 @@ namespace InventoryManagementSystem
             var LaptopProduct = new Product(1, "laptop", electronicsCategory, 1200.00m);
             var PhoneProduct = new Product(2,"iphone", electronicsCategory, 800.00m);
 
-            inventory.AddProduct(LaptopProduct);
-            inventory.AddProduct(PhoneProduct);
+            var laptopLocation = new Location(1,1,5); // row, floor, shelf
+            var phoneLocation = new Location(2,3,10);
+
+            inventory.AddProduct(LaptopProduct, laptopLocation);
+            inventory.AddProduct(PhoneProduct, phoneLocation);
 
             inventory.AddStock(1,10);
             inventory.AddStock(2,5);
+            inventory.GetProductLocation(1);
+            inventory.GetProductLocation(2);
+
+            var tabletProduct = new Product(3, "Tablet", electronicsCategory, 600.00m);
+             var tabletLocation = new Location(5, 2, 20); // Row 5, Floor 2, Shelf 20
+             inventory.AddProduct(tabletProduct, tabletLocation);
+            inventory.AddStock(3, 8);
+
+            inventory.GetProductLocation(3); // For Tablet
+
 
                var customer = new Customer(1, "Jan", "rahimi.john10@gmail.com");
             var order = new Order(1, customer);
@@ -158,10 +171,22 @@ namespace InventoryManagementSystem
         private List<StockItem>StockItemsItems = new <StockItem>();
         private List<Transaction>Transactions = new <Transaction>();
 
-        public void AddProduct(Product product){
-            stockItems.Add(new StockItem(product));
-            Console.WriteLine($"{product.Name}added to inventory.");
+        public void AddProduct(Product product, Location location){
+            stockItems.Add(new StockItem(product, location));
+            Console.WriteLine($"{product.Name}added to inventory att {location}");
 
+        }
+
+        public StockItem GetProductLocation(int ProductId){
+            var stockItem = stockitems.FirtOrDefault(s => s.Product.Id == ProductId);
+            if(stockItem != null){
+                Console.WriteLine($"{stockItem.Product.Name} is located att {stockItem.Location}");
+                return stockItem;
+            }
+            else{
+                Console.WriteLine("product not found in inventory");
+                return null;
+            }
         }
 
         public void RemoveStock(int productId){
@@ -180,7 +205,10 @@ namespace InventoryManagementSystem
             if(Items!= null){
                Items.Quantity += Quantity;
                Transactions.Add(new Transaction.(Items.product,Quantity, TransactionsType.IN));
-               Console.WriteLine($"{quantity}unite of {Item.Product.Name} added to stock");
+               Console.WriteLine($"{quantity}unite of {Item.Product.Name} added to stock att {stockItem.Location}.");
+            }
+            else {
+                Console.WriteLine("product not found");
             }
         }
 
@@ -210,11 +238,18 @@ namespace InventoryManagementSystem
     public class StockItem{
         public Product Product {get; set;}
         public int Quantity{get; set;}
+        public Location location{get;set;}
 
-        public StockItem(Product product){
+
+        public StockItem(Product product, Location location){
             Product= product;
             Quantity = 0;
+            Location = location;
         }
+        public override string ToString()
+    {
+        return $"{Product.Name} - Quantity: {Quantity}, Location: {Location}";
+    }
     }
 
     // transaction class 
@@ -229,7 +264,7 @@ namespace InventoryManagementSystem
             Product = product;
             Quantity = quantity;
             Type = type;
-            Date = DateTime.Now;
+            date = DateTime.Now;
         }
 
     }
@@ -266,7 +301,11 @@ namespace InventoryManagementSystem
         Shelf = shelf;
 
         }
+    public override string ToString()
+    {
+        return $"Row:{Row}, Floor:{Floor}, Shelf:{Shelf}";
     }
+}
 
         // ReportGenerator Class with Additional Reports
 
