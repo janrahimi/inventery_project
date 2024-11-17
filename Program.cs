@@ -171,8 +171,8 @@ namespace InventoryManagementSystem
     // inventery class
 
     public class Inventory{
-        private List<StockItem>StockItemsItems = new <StockItem>();
-        private List<Transaction>Transactions = new <Transaction>();
+        private List<StockItem> stockItems = new List<StockItem>();
+        private List<Transaction> Transactions = new List<Transaction>();
         private List<Driver> drivers = new List<Driver>();
 
         public void AddProduct(Product product, Location location){
@@ -182,9 +182,9 @@ namespace InventoryManagementSystem
         }
 
         public StockItem GetProductLocation(int ProductId){
-            var stockItem = stockitems.FirtOrDefault(s => s.Product.Id == ProductId);
+            var stockItem = stockItems.FirstOrDefault(s => s.Product.Id == ProductId);
             if(stockItem != null){
-                Console.WriteLine($"{stockItem.Product.Name} is located att {stockItem.Location}");
+                Console.WriteLine($"{stockItem.Product.Name} is located att {stockItem.location}");
                 return stockItem;
             }
             else{
@@ -194,13 +194,13 @@ namespace InventoryManagementSystem
         }
 
         public void RemoveStock(int productId, int Quantity, Driver driver){
-            var Items = stockItems.fint(s => Items.product.Id ==ProductId);
-            if(Items!=null && stockItems.Quantity >= quantity){
+            var stockItem = stockItems.Find(s => s.Product.Id == productId);
+            if(stockItem!=null && stockItem.Quantity >= Quantity){
                 //stockItems.Remove(item);
-                stockItems.Quantity-= Quantity;
-                Transaction.Add(new Transaction(stockItem.Product, quantity, TransactionType.OUT));
+                stockItem.Quantity-= Quantity;
+                Transactions.Add(new Transaction(stockItem.Product, Quantity, TransactionType.OUT));
                 drivers.Add(driver);
-                Console.WriteLine($"{qunatity} units of {stockItem.Product.Name} removed frome the stock {driver}");
+                Console.WriteLine($"{Quantity} units of {stockItem.Product.Name} removed frome the stock {driver}");
             }
             else{
                 Console.WriteLine("insuficient or product not found");
@@ -218,12 +218,12 @@ namespace InventoryManagementSystem
 
 
         public void AddStock(int ProductId, int Quantity){
-            var Items = StockItemsItems.Find(s=> Items.Product.Id == ProductId);
-            if(Items!= null){
-               Items.Quantity += Quantity;
-               Transactions.Add(new Transaction.(Items.product,Quantity, TransactionsType.IN));
+            var stockItem = stockItems.Find(s=> s.Product.Id == ProductId);
+            if(stockItem!= null){
+               stockItem.Quantity += Quantity;
+               Transactions.Add(new Transaction(stockItem.Product,Quantity, TransactionType.IN));
                drivers.Add(driver);
-               Console.WriteLine($"{quantity}unite of {Item.Product.Name} added to stock att {stockItem.Location} added to stock {driver}.");
+               Console.WriteLine($"{Quantity}unite of {stockItem.Product.Name} added to stock att {stockItem.Location} added to stock {driver}.");
             }
             else {
                 Console.WriteLine("product not found");
@@ -232,15 +232,15 @@ namespace InventoryManagementSystem
 
         public void ProcessOrder(Order order){
             foreach(var item in order.Items){
-                var stockItems.Find(s => s.product.id == item.Product.Id);
-                if(stockItems != null && stockItems.Quantity >= item.Quantity){
-                   stockItems.Quantity -= item.Quantity;
-                   Transactions.Add(new Transaction(stockItem.Product, item.Quantity, TransactionsType.Out));
-                   Console.WriteLine($"{item.Quantity} unit of {item.Product.Name} sold to {order.Customer.Name}");
+                var stockItem = stockItems.Find(s => s.Product.Id == item.product.Id);
+                if(stockItem != null && stockItem.Quantity >= item.Quantity){
+                   stockItem.Quantity -= item.Quantity;
+                   Transactions.Add(new Transaction(stockItem.Product, item.Quantity, TransactionType.OUT));
+                   Console.WriteLine($"{item.Quantity} unit of {item.product.Name} sold to {order.Customer.Name}");
 
                 }
                 else{
-                    Console.WriteLine($"insufficient stock for{item.Prodct.Name}");
+                    Console.WriteLine($"insufficient stock for{item.product.Name}");
                 }
 
             }
@@ -257,16 +257,18 @@ namespace InventoryManagementSystem
         public Product Product {get; set;}
         public int Quantity{get; set;}
         public Location location{get;set;}
+    public StockItem(Product product, Location location)
+{
+    this.Product = product;  // Assign the parameter 'product' to the property 'Product'
+    this.Quantity = 0;       // Initialize Quantity to 0
+    this.Location = location; // Assign the parameter 'location' to the property 'Location'
+}
 
-
-        public StockItem(Product product, Location location){
-            Product= product;
-            Quantity = 0;
-            Location = location;
-        }
+        
+        
         public override string ToString()
     {
-        return $"{Product.Name} - Quantity: {Quantity}, Location: {Location}";
+        return $"{Product.Name} - Quantity: {Quantity}, Location: {location}";
     }
     }
 
