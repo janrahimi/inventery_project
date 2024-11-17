@@ -12,7 +12,7 @@ using InventoryManagementSystem;
 namespace InventoryManagementSystem
 {
     public class InventorySystem{
-        public static void main(String[] args){
+        public static void Main(String[] args){
             Console.WriteLine("welcome to inventory management system!");
 
             Inventory inventory = new Inventory();
@@ -25,21 +25,27 @@ namespace InventoryManagementSystem
             var laptopLocation = new Location(1,1,5); // row, floor, shelf
             var phoneLocation = new Location(2,3,10);
 
+            var driver1 = new Driver("John Smith", "ABC Logistics", "TRK1234", DateTime.Now);
+            var driver2 = new Driver("Jane Doe", "XYZ Freight", "TRK5678", DateTime.Now);
+
             inventory.AddProduct(LaptopProduct, laptopLocation);
             inventory.AddProduct(PhoneProduct, phoneLocation);
 
-            inventory.AddStock(1,10);
-            inventory.AddStock(2,5);
+            inventory.AddStock(1,10, driver1);
+            inventory.AddStock(2,5, driver2);
             inventory.GetProductLocation(1);
             inventory.GetProductLocation(2);
 
             var tabletProduct = new Product(3, "Tablet", electronicsCategory, 600.00m);
              var tabletLocation = new Location(5, 2, 20); // Row 5, Floor 2, Shelf 20
+
              inventory.AddProduct(tabletProduct, tabletLocation);
             inventory.AddStock(3, 8);
 
             inventory.GetProductLocation(3); // For Tablet
 
+            inventory.RemoveStock(1, 3, new Driver("Emily Clark", "Global Haulage", "TRK9876", DateTime.Now));
+            inventory.GetDriverLog();
 
                var customer = new Customer(1, "Jan", "rahimi.john10@gmail.com");
             var order = new Order(1, customer);
@@ -170,6 +176,7 @@ namespace InventoryManagementSystem
     public class Inventory{
         private List<StockItem>StockItemsItems = new <StockItem>();
         private List<Transaction>Transactions = new <Transaction>();
+        private List<Driver> drivers = new List<Driver>();
 
         public void AddProduct(Product product, Location location){
             stockItems.Add(new StockItem(product, location));
@@ -189,23 +196,37 @@ namespace InventoryManagementSystem
             }
         }
 
-        public void RemoveStock(int productId){
+        public void RemoveStock(int productId, int Quantity, Driver driver){
             var Items = stockItems.fint(s => Items.product.Id ==ProductId);
-            if(Items!=null){
-                StockItems.Remove(item);
-                Console.WriteLine($"{Item.Product.Name} removed frome the inventory list");
+            if(Items!=null && stockItems.Quantity >= quantity){
+                //stockItems.Remove(item);
+                stockItems.Quantity-= Quantity;
+                Transaction.Add(new Transaction(stockItem.Product, quantity, TransactionType.OUT));
+                drivers.Add(driver);
+                Console.WriteLine($"{qunatity} units of {stockItem.Product.Name} removed frome the stock {driver}");
             }
             else{
-                Console.WriteLine("product not found");
+                Console.WriteLine("insuficient or product not found");
             }
 
         }
+
+        public void GetDriverLog(){
+            Console.WriteLine("\n Driver Log");
+            foreach(var driver in drivers){
+                Console.WriteLine(driver);
+            }
+
+        }
+
+
         public void AddStock(int ProductId, int Quantity){
             var Items = StockItemsItems.Find(s=> Items.Product.Id == ProductId);
             if(Items!= null){
                Items.Quantity += Quantity;
                Transactions.Add(new Transaction.(Items.product,Quantity, TransactionsType.IN));
-               Console.WriteLine($"{quantity}unite of {Item.Product.Name} added to stock att {stockItem.Location}.");
+               drivers.Add(driver);
+               Console.WriteLine($"{quantity}unite of {Item.Product.Name} added to stock att {stockItem.Location} added to stock {driver}.");
             }
             else {
                 Console.WriteLine("product not found");
