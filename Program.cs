@@ -349,6 +349,29 @@ namespace InventoryManagementSystem
               
         } 
 
+        // driver class that track the driver and time and date of the deliver from/to ware house
+
+        public class Driver{
+            public string Name {get; set;}
+            public string Company{ get; set;} 
+            public string TruckNumber {get; set;}
+            public DateTime DateTime {get; set;}
+
+            public Driver(string name, string company, string truckNumber, DateTime dateTime){
+                Name = name;
+                Company = company;
+                TruckNumber = truckNumber;
+                DateTime = dateTime;
+            }
+
+    public override string ToString()
+    {
+        return $"Driver: {Name}, Company: {Company}, Truck: {TruckNumber}, Date/Time: {DateTime}";
+
+    }
+
+}
+
         // enum with additional roles
 
     public enum Role{
