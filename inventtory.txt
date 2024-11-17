@@ -1,3 +1,95 @@
 Author    Jan Rahimi    
 
-In this project i have developed an inventory system for a a cmpany.
+# Define the program description for the Inventory Management System project
+program_description = """
+# Inventory Management System Documentation
+
+## Project Overview
+
+Author: Jan Rahimi  
+This project is an Inventory Management System developed in C#. It allows businesses to efficiently manage their stock by tracking inventory levels, product locations, drivers, and transactions. The system supports adding, updating, and removing products, processing orders, generating reports, and managing user roles.
+
+---
+
+## Features
+
+1. **Product Management**: Add, update, and locate products. Track stock levels with a categorized inventory.  
+2. **Stock Management**: Add and remove stock for specific products. Log stock transactions, including drivers and timestamps.  
+3. **Order Processing**: Create customer orders and process them while updating inventory levels.  
+4. **Driver Management**: Track driver details, including name, company, truck number, and delivery date/time.  
+5. **Location Tracking**: Assign products to specific locations within a warehouse (row, floor, shelf).  
+6. **Reporting**: Generate inventory reports, low-stock reports based on customizable thresholds, and transaction reports for auditing.  
+7. **User Role Management**: Support for multiple user roles: Admin, Manager, and Employee.  
+
+---
+
+## Class Descriptions
+
+### 1. InventorySystem
+- **Purpose:** Entry point for the application.  
+- **Main Functions:** Initializes inventory and drivers, and demonstrates system functionalities such as adding products, processing orders, and generating reports.  
+
+### 2. Product
+- Represents a product in the inventory with properties for ID, name, category, and price.  
+- Includes methods to update product details and display formatted information.
+
+### 3. Category
+- Represents a product category with a property for the category name.
+
+### 4. Inventory
+- Manages product stock and locations, maintains a list of transactions and drivers, and provides functionality to add/remove stock, process orders, and retrieve driver logs.
+
+### 5. StockItem
+- Represents a product, its quantity, and its location in the inventory. Includes methods for displaying details.
+
+### 6. Transaction
+- Represents a stock transaction with properties for product, quantity, type (IN/OUT), and date.
+
+### 7. Location
+- Represents a specific location in the warehouse, with properties for row, floor, and shelf.
+
+### 8. ReportGenerator
+- Provides methods for generating inventory reports, low-stock reports, and transaction reports.
+
+### 9. Driver
+- Represents a driver involved in stock deliveries or pickups, including details about the driver, their company, truck number, and the delivery date/time.
+
+### 10. User
+- Manages application users and their roles (Admin, Manager, or Employee).
+
+---
+
+## To-Do List
+
+### Phase 1: Core Development
+- [x] Implement the `Product`, `Category`, `Inventory`, `StockItem`, `Transaction`, and `Location` classes.  
+
+### Phase 2: Functional Enhancements
+- [x] Add the `Driver` class to log deliveries and pickups.  
+- [x] Add `Order` and `OrderItem` classes for order processing.  
+- [x] Add `ReportGenerator` for generating inventory and transaction reports.  
+- [x] Add the `User` class with role-based access.  
+
+### Phase 3: Testing and Debugging
+- [x] Test functionalities, including adding, updating, and removing products, as well as stock addition/removal and order processing.  
+- [x] Verify generated inventory, low-stock, and transaction reports.  
+
+### Phase 4: Enhancements
+- [ ] Add persistent storage for inventory and transactions (e.g., database or file).  
+- [ ] Implement a user-friendly GUI.  
+- [ ] Add authentication for users.  
+
+---
+
+## Summary
+
+This program provides a comprehensive solution for managing inventory in a business setting. It tracks stock, processes orders, and maintains detailed transaction logs while providing user role-based management. Future enhancements include database integration, GUI implementation, and user authentication to further improve usability and efficiency.
+"""
+
+# Save the program description to a text file
+file_path = "/mnt/data/program.txt"
+with open(file_path, "w") as file:
+    file.write(program_description)
+
+file_path
+

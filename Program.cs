@@ -35,7 +35,7 @@ namespace InventoryManagementSystem
             var tabletLocation = new Location(5, 2, 20); // Row 5, Floor 2, Shelf 20
 
             inventory.AddProduct(tabletProduct, tabletLocation);
-            inventory.AddStock(3, 8);
+           // inventory.Addstock(2,5);
 
             inventory.GetProductLocation(3); // For Tablet
 
@@ -182,20 +182,36 @@ namespace InventoryManagementSystem
         }
 
         public void AddStock(int productId, int quantity, Driver driver)
-        {
-            var stockItem = stockItems.Find(s => s.Product.Id == productId);
-            if (stockItem != null)
-            {
-                stockItem.Quantity += quantity;
-                transactions.Add(new Transaction(stockItem.Product, quantity, TransactionType.IN));
-                drivers.Add(driver);
-                Console.WriteLine($"{quantity} units of {stockItem.Product.Name} added to stock at {stockItem.Location}. Driver: {driver}");
-            }
-            else
-            {
-                Console.WriteLine("Product not found.");
-            }
-        }
+{
+    var stockItem = stockItems.Find(s => s.Product.Id == productId);
+    if (stockItem != null)
+    {
+        stockItem.Quantity += quantity;
+        transactions.Add(new Transaction(stockItem.Product, quantity, TransactionType.IN));
+        drivers.Add(driver);
+        Console.WriteLine($"{quantity} units of {stockItem.Product.Name} added to stock at {stockItem.Location}. Driver: {driver}");
+    }
+    else
+    {
+        Console.WriteLine("Product not found.");
+    }
+}
+
+public void AddStock(int productId, int quantity)
+{
+    var stockItem = stockItems.Find(s => s.Product.Id == productId);
+    if (stockItem != null)
+    {
+        stockItem.Quantity += quantity;
+        transactions.Add(new Transaction(stockItem.Product, quantity, TransactionType.IN));
+        Console.WriteLine($"{quantity} units of {stockItem.Product.Name} added to stock at {stockItem.Location}.");
+    }
+    else
+    {
+        Console.WriteLine("Product not found.");
+    }
+}
+
 
         public void RemoveStock(int productId, int quantity, Driver driver)
         {
