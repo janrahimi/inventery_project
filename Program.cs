@@ -86,7 +86,7 @@ namespace InventoryManagementSystem
 
         }
 
-        public void UppdatePrice(String Name, Category category, decimal Price){
+        public void UpdatePrice(String Name, Category category, decimal Price){
             this.Name = Name;
             this.Category = category;
             this.Price = Price;
@@ -94,11 +94,7 @@ namespace InventoryManagementSystem
         }
 
         public override string ToString()=> $" product:{Name}, price: {Price:C}, Category:{Category.Name}";
-        {
-
-        }
-
-
+        
     }
 
     public class Category{
@@ -139,15 +135,16 @@ namespace InventoryManagementSystem
         }
     }
 
+// order class 
     public class Order{
         public int Id{get; set;}
         public Customer Customer{get; set;}
-        public List<OrderItems>Items {get; set;}
+        public List<OrderItem>Items {get; set;}
 
-        public Order(int Id, Customer customer){
-            this.Id = id;
-            this.Customer = customer;
-            this.Items = new List<OrderItems>();
+        public Order(int id, Customer customer){
+            Id = id;
+            Customer = customer;
+            Items = new List<OrderItem>();
         }
 
         public void AddItem(OrderItem item){
