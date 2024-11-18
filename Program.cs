@@ -59,7 +59,7 @@ namespace InventoryManagementSystem
             Console.WriteLine($"{employee.Username}: {employee.Role}");
         }
     }
-
+// class product vilket har koll att på producter som finns i lager
     public class Product
     {
         public int Id { get; set; }
