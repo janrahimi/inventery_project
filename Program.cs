@@ -302,6 +302,7 @@ public void AddStock(int productId, int quantity)
         OUT,
     }
 
+// klass location som spårar item att vart ligger dem i lagret
     public class Location
     {
         public int Row { get; set; }
