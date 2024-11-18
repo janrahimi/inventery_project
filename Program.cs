@@ -298,7 +298,7 @@ public void AddStock(int productId, int quantity)
     public enum TransactionType
     {
         IN,
-        OUT
+        OUT,
     }
 
     public class Location
