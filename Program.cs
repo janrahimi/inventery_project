@@ -259,7 +259,7 @@ public void AddStock(int productId, int quantity)
         public List<StockItem> GetStockItems() => stockItems;
         public List<Transaction> GetTransactions() => transactions;
     }
-
+//klass stockitem
     public class StockItem
     {
         public Product Product { get; set; }
