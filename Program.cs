@@ -278,7 +278,7 @@ public void AddStock(int productId, int quantity)
             return $"{Product.Name} - Quantity: {Quantity}, Location: {Location}";
         }
     }
-
+// klass transaction som har koll på ingående och utgående stockitem från lagret
     public class Transaction
     {
         public Product Product { get; set; }
