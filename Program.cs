@@ -353,6 +353,7 @@ public void AddStock(int productId, int quantity)
         }
     }
 
+// klass user som har koll på adminstrativ i lagret
     public class User
     {
         public string Username { get; set; }

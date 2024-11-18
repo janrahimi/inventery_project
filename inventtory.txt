@@ -62,22 +62,22 @@ This project is an Inventory Management System developed in C#. It allows busine
 ## To-Do List
 
 ### Phase 1: Core Development
-- [x] Implement the `Product`, `Category`, `Inventory`, `StockItem`, `Transaction`, and `Location` classes.  
+- [ok] Implement the `Product`, `Category`, `Inventory`, `StockItem`, `Transaction`, and `Location` classes.  
 
 ### Phase 2: Functional Enhancements
-- [x] Add the `Driver` class to log deliveries and pickups.  
-- [x] Add `Order` and `OrderItem` classes for order processing.  
-- [x] Add `ReportGenerator` for generating inventory and transaction reports.  
-- [x] Add the `User` class with role-based access.  
+- [ok] Add the `Driver` class to log deliveries and pickups.  
+- [ok] Add `Order` and `OrderItem` classes for order processing.  
+- [ok] Add `ReportGenerator` for generating inventory and transaction reports.  
+- [ok] Add the `User` class with role-based access.  
 
 ### Phase 3: Testing and Debugging
-- [x] Test functionalities, including adding, updating, and removing products, as well as stock addition/removal and order processing.  
-- [x] Verify generated inventory, low-stock, and transaction reports.  
+- [ok] Test functionalities, including adding, updating, and removing products, as well as stock addition/removal and order processing.  
+- [ok] Verify generated inventory, low-stock, and transaction reports.  
 
 ### Phase 4: Enhancements
-- [ ] Add persistent storage for inventory and transactions (e.g., database or file).  
-- [ ] Implement a user-friendly GUI.  
-- [ ] Add authentication for users.  
+- [ x] Add persistent storage for inventory and transactions (e.g., database or file).  
+- [x ] Implement a user-friendly GUI.  
+- [ x] Add authentication for users.  
 
 ---
 
