@@ -295,6 +295,7 @@ public void AddStock(int productId, int quantity)
         }
     }
 
+// enum för transaction 
     public enum TransactionType
     {
         IN,
