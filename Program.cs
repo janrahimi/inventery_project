@@ -322,6 +322,7 @@ public void AddStock(int productId, int quantity)
         }
     }
 
+// klass reportgenerator som uppdaterar lager status
     public class ReportGenerator
     {
         public void GenerateInventoryReport(Inventory inventory)
