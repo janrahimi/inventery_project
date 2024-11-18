@@ -375,6 +375,7 @@ public void AddStock(int productId, int quantity)
         Employee
     }
 
+// driver klass som har koll på förarna 
     public class Driver
     {
         public string Name { get; set; }
