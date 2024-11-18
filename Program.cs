@@ -367,7 +367,7 @@ public void AddStock(int productId, int quantity)
             Role = role;
         }
     }
-
+// enum för personal rolen i lagret
     public enum Role
     {
         Admin,
