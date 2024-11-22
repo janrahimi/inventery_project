@@ -1,4 +1,4 @@
-namespace InventoryManagementSystem.Models
+namespace InventoryManagementSystem.Models// klass för customer
 {
     public class Customer
     {
@@ -14,3 +14,4 @@ namespace InventoryManagementSystem.Models
         }
     }
 }
+// denna klass tar hand customer och vi kan hämta hela metoden från program.cs där finns hela implementationen.
