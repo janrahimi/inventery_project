@@ -372,7 +372,7 @@ public void AddStock(int productId, int quantity)
     {
         Admin,
         Manager,
-        Employee
+        Employee,
     }
 
 // driver klass som har koll på förarna 
@@ -396,5 +396,6 @@ public void AddStock(int productId, int quantity)
             return $"Driver: {Name}, Company: {Company}, Truck: {TruckNumber}, Date/Time: {DateTime}";
         }
     }
+    
 }
 // har försökt att lägga 

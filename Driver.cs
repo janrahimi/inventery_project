@@ -2,7 +2,7 @@ using System;
 
 namespace InventoryManagementSystem.Models
 {
-    public class Driver
+    public class Driver // denna är driver klass som registrerar föraren 
     {
         public string Name { get; set; }
         public string Company { get; set; }
