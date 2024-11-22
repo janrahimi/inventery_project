@@ -397,3 +397,4 @@ public void AddStock(int productId, int quantity)
         }
     }
 }
+// har försökt att lägga 
