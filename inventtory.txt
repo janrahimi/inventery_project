@@ -79,6 +79,8 @@ This project is an Inventory Management System developed in C#. It allows busine
 - [x ] Implement a user-friendly GUI.  
 - [ x] Add authentication for users.  
 
+I have divided my program to different classes to make the program more readable for every OneDrive
+
 ---
 
 ## Summary
