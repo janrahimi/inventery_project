@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace InventoryManagementSystem.Models
 {
-    public class Order
+    public class Order     // order class 
     {
-        public int Id { get; set; }
+        public int Id { get; set; }   // getter och setter som kontroller order
         public Customer Customer { get; set; }
         public List<OrderItem> Items { get; set; }
 
