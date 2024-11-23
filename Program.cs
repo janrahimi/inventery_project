@@ -1,58 +1,5 @@
 ﻿
-
-
 using System;
-
-namespace InventoryManagementSystem
-{
-    public class InventorySystem
-    {
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Welcome to Inventory Management System!");
-
-            Inventory inventory = new Inventory();
-            ReportGenerator reportGenerator = new ReportGenerator();
-
-            var electronicsCategory = new Category("Electronics");
-            var laptopProduct = new Product(1, "Laptop", electronicsCategory, 1200.00m);
-            var phoneProduct = new Product(2, "iPhone", electronicsCategory, 800.00m);
-
-            var laptopLocation = new Location(1, 1, 5);
-            var phoneLocation = new Location(2, 3, 10);
-
-            var driver1 = new Driver("John Smith", "ABC Logistics", "TRK1234", DateTime.Now);
-            var driver2 = new Driver("Jane Doe", "XYZ Freight", "TRK5678", DateTime.Now);
-
-            inventory.AddProduct(laptopProduct, laptopLocation);
-            inventory.AddProduct(phoneProduct, phoneLocation);
-
-            inventory.AddStock(1, 10, driver1);
-            inventory.AddStock(2, 5, driver2);
-
-            var tabletProduct = new Product(3, "Tablet", electronicsCategory, 600.00m);
-            var tabletLocation = new Location(5, 2, 20);
-            inventory.AddProduct(tabletProduct, tabletLocation);
-
-            inventory.RemoveStock(1, 3, new Driver("Emily Clark", "Global Haulage", "TRK9876", DateTime.Now));
-            inventory.GetDriverLog();
-
-            reportGenerator.GenerateInventoryReport(inventory);
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-/*using System;
 using System.Collections.Generic;
 using System.Linq;
 
