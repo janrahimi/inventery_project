@@ -80,7 +80,7 @@ This project is an Inventory Management System developed in C#. It allows busine
 - [ x] Add authentication for users.  
 
 I have divided my program to different classes to make the program more readable for every OneDrive
-
+I have brought to many changes to the program due of som faults and in the final i had to write all the classes again in the one program.
 ---
 
 ## Summary
