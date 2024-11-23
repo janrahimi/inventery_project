@@ -1,3 +1,16 @@
+
+namespace InventoryManagementSystem
+{
+    public class ReportGenerator
+    {
+        public void GenerateInventoryReport(Inventory inventory)
+        {
+            Console.WriteLine("\nInventory Report:");
+        }
+    }
+}
+
+
 /*using System;
 using InventoryManagementSystem.Models;
 
