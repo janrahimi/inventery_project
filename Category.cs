@@ -1,4 +1,4 @@
-namespace InventoryManagementSystem.Models
+namespace InventoryManagementSystem
 {
     public class Category
     {
@@ -10,3 +10,4 @@ namespace InventoryManagementSystem.Models
         }
     }
 }
+//YYYY

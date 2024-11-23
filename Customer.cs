@@ -1,4 +1,4 @@
-namespace InventoryManagementSystem.Models// klass för customer
+/*namespace InventoryManagementSystem.Models// klass för customer
 {
     public class Customer
     {

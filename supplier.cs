@@ -1,4 +1,4 @@
-namespace InventoryManagementSystem.Models
+/*namespace InventoryManagementSystem.Models
 {
     public class Supplier
     {

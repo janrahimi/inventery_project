@@ -1,4 +1,4 @@
-namespace InventoryManagementSystem.Models
+namespace InventoryManagementSystem
 {
     public class Product
     {
@@ -14,7 +14,5 @@ namespace InventoryManagementSystem.Models
             Category = category;
             Price = price;
         }
-
-        public override string ToString() => $"Product: {Name}, Price: {Price:C}, Category: {Category.Name}";
     }
 }
