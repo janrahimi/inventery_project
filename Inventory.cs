@@ -1,3 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace InventoryManagementSystem
+{
+    public class Inventory
+    {
+        private List<StockItem> stockItems = new List<StockItem>();
+        private List<Transaction> transactions = new List<Transaction>();
+
+        public void AddProduct(Product product, Location location)
+        {
+            stockItems.Add(new StockItem(product, location));
+        }
+
+        public void AddStock(int productId, int quantity, Driver driver)
+        {
+            var stockItem = stockItems.FirstOrDefault(s => s.Product.Id == productId);
+            if (stockItem != null)
+            {
+                stockItem.Quantity += quantity;
+                transactions.Add(new Transaction(stockItem.Product, quantity, TransactionType.IN));
+            }
+        }
+
+        public void RemoveStock(int productId, int quantity, Driver driver)
+        {
+            var stockItem = stockItems.FirstOrDefault(s => s.Product.Id == productId);
+            if (stockItem != null && stockItem.Quantity >= quantity)
+            {
+                stockItem.Quantity -= quantity;
+                transactions.Add(new Transaction(stockItem.Product, quantity, TransactionType.OUT));
+            }
+        }
+
+        public void GetDriverLog()
+        {
+            Console.WriteLine("\nDriver Log:");
+        }
+    }
+}
+
+
+
+
+
 /*using System;
 using System.Collections.Generic;
 using System.Linq;
