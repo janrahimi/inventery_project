@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -33,12 +32,10 @@ namespace InventoryManagementSystem
             inventory.GetProductLocation(2);
 
             var tabletProduct = new Product(3, "Tablet", electronicsCategory, 600.00m);
-            var tabletLocation = new Location(5, 2, 20); // Row 5, Floor 2, Shelf 20
+            var tabletLocation = new Location(5, 2, 20);
 
             inventory.AddProduct(tabletProduct, tabletLocation);
-           // inventory.Addstock(2,5);
-
-            inventory.GetProductLocation(3); // For Tablet
+            inventory.GetProductLocation(3);
 
             inventory.RemoveStock(1, 3, new Driver("Emily Clark", "Global Haulage", "TRK9876", DateTime.Now));
             inventory.GetDriverLog();
@@ -51,7 +48,6 @@ namespace InventoryManagementSystem
             reportGenerator.GenerateInventoryReport(inventory);
             reportGenerator.GenerateLowStockReport(inventory, 3);
 
-            // Adding user management
             User admin = new User("admin", "password123", Role.Admin);
             User employee = new User("employee", "password456", Role.Employee);
 
@@ -60,7 +56,7 @@ namespace InventoryManagementSystem
             Console.WriteLine($"{employee.Username}: {employee.Role}");
         }
     }
-// class product vilket har koll att på producter som finns i lager
+
     public class Product
     {
         public int Id { get; set; }
@@ -86,16 +82,14 @@ namespace InventoryManagementSystem
         public override string ToString() => $"Product: {Name}, Price: {Price:C}, Category: {Category.Name}";
     }
 
-    public class Category
-    {
-        public string Name { get; set; }
-
-        public Category(string name)
-        {
-            Name = name;
-        }
-    }
-
+    public enum Category// här jag har ändrat klass till enum
+     {
+          Electronics,
+         Clothing,
+         Food,
+         Furniture,
+         Books
+     }
     public class Supplier
     {
         public int Id { get; set; }
@@ -183,36 +177,16 @@ namespace InventoryManagementSystem
         }
 
         public void AddStock(int productId, int quantity, Driver driver)
-{
-    var stockItem = stockItems.Find(s => s.Product.Id == productId);
-    if (stockItem != null)
-    {
-        stockItem.Quantity += quantity;
-        transactions.Add(new Transaction(stockItem.Product, quantity, TransactionType.IN));
-        drivers.Add(driver);
-        Console.WriteLine($"{quantity} units of {stockItem.Product.Name} added to stock at {stockItem.Location}. Driver: {driver}");
-    }
-    else
-    {
-        Console.WriteLine("Product not found.");
-    }
-}
-
-public void AddStock(int productId, int quantity)
-{
-    var stockItem = stockItems.Find(s => s.Product.Id == productId);
-    if (stockItem != null)
-    {
-        stockItem.Quantity += quantity;
-        transactions.Add(new Transaction(stockItem.Product, quantity, TransactionType.IN));
-        Console.WriteLine($"{quantity} units of {stockItem.Product.Name} added to stock at {stockItem.Location}.");
-    }
-    else
-    {
-        Console.WriteLine("Product not found.");
-    }
-}
-
+        {
+            var stockItem = stockItems.Find(s => s.Product.Id == productId);
+            if (stockItem != null)
+            {
+                stockItem.Quantity += quantity;
+                transactions.Add(new Transaction(stockItem.Product, quantity, TransactionType.IN));
+                drivers.Add(driver);
+                Console.WriteLine($"{quantity} units of {stockItem.Product.Name} added to stock. Driver: {driver}");
+            }
+        }
 
         public void RemoveStock(int productId, int quantity, Driver driver)
         {
@@ -223,10 +197,6 @@ public void AddStock(int productId, int quantity)
                 transactions.Add(new Transaction(stockItem.Product, quantity, TransactionType.OUT));
                 drivers.Add(driver);
                 Console.WriteLine($"{quantity} units of {stockItem.Product.Name} removed from stock. Driver: {driver}");
-            }
-            else
-            {
-                Console.WriteLine("Insufficient stock or product not found.");
             }
         }
 
@@ -241,10 +211,6 @@ public void AddStock(int productId, int quantity)
                     transactions.Add(new Transaction(stockItem.Product, item.Quantity, TransactionType.OUT));
                     Console.WriteLine($"{item.Quantity} unit(s) of {item.Product.Name} sold to {order.Customer.Name}");
                 }
-                else
-                {
-                    Console.WriteLine($"Insufficient stock for {item.Product.Name}");
-                }
             }
         }
 
@@ -256,11 +222,8 @@ public void AddStock(int productId, int quantity)
                 Console.WriteLine(driver);
             }
         }
-
-        public List<StockItem> GetStockItems() => stockItems;
-        public List<Transaction> GetTransactions() => transactions;
     }
-//klass stockitem
+
     public class StockItem
     {
         public Product Product { get; set; }
@@ -270,40 +233,17 @@ public void AddStock(int productId, int quantity)
         public StockItem(Product product, Location location)
         {
             Product = product;
-            Quantity = 0;
             Location = location;
-        }
-
-        public override string ToString()
-        {
-            return $"{Product.Name} - Quantity: {Quantity}, Location: {Location}";
-        }
-    }
-// klass transaction som har koll på ingående och utgående stockitem från lagret
-    public class Transaction
-    {
-        public Product Product { get; set; }
-        public int Quantity { get; set; }
-        public TransactionType Type { get; set; }
-        public DateTime Date { get; set; }
-
-        public Transaction(Product product, int quantity, TransactionType type)
-        {
-            Product = product;
-            Quantity = quantity;
-            Type = type;
-            Date = DateTime.Now;
+            Quantity = 0;
         }
     }
 
-// enum för transaction 
     public enum TransactionType
     {
         IN,
-        OUT,
+        OUT
     }
 
-// klass location som spårar item att vart ligger dem i lagret
     public class Location
     {
         public int Row { get; set; }
@@ -316,14 +256,24 @@ public void AddStock(int productId, int quantity)
             Floor = floor;
             Shelf = shelf;
         }
+    }
 
-        public override string ToString()
+    public class Driver
+    {
+        public string Name { get; set; }
+        public string Company { get; set; }
+        public string TruckNumber { get; set; }
+        public DateTime DateTime { get; set; }
+
+        public Driver(string name, string company, string truckNumber, DateTime dateTime)
         {
-            return $"Row: {Row}, Floor: {Floor}, Shelf: {Shelf}";
+            Name = name;
+            Company = company;
+            TruckNumber = truckNumber;
+            DateTime = dateTime;
         }
     }
 
-// klass reportgenerator som uppdaterar lager status
     public class ReportGenerator
     {
         public void GenerateInventoryReport(Inventory inventory)
@@ -340,21 +290,18 @@ public void AddStock(int productId, int quantity)
             Console.WriteLine("\nLow Stock Report:");
             foreach (var item in inventory.GetStockItems().Where(i => i.Quantity < threshold))
             {
-                Console.WriteLine($"{item.Product.Name}: {item.Quantity} units in stock (below threshold of {threshold})");
-            }
-        }
-
-        public void GenerateTransactionReport(Inventory inventory)
-        {
-            Console.WriteLine("\nTransaction Report:");
-            foreach (var transaction in inventory.GetTransactions())
-            {
-                Console.WriteLine($"{transaction.Date}: {transaction.Type} - {transaction.Quantity} units of {transaction.Product.Name}");
+                Console.WriteLine($"{item.Product.Name}: {item.Quantity} units");
             }
         }
     }
 
-// klass user som har koll på adminstrativ i lagret
+    public enum Role
+    {
+        Admin,
+        Manager,
+        Employee
+    }
+
     public class User
     {
         public string Username { get; set; }
@@ -368,35 +315,4 @@ public void AddStock(int productId, int quantity)
             Role = role;
         }
     }
-// enum för personal rolen i lagret
-    public enum Role
-    {
-        Admin,
-        Manager,
-        Employee,
-    }
-
-// driver klass som har koll på förarna 
-    public class Driver
-    {
-        public string Name { get; set; }
-        public string Company { get; set; }
-        public string TruckNumber { get; set; }
-        public DateTime DateTime { get; set; }
-
-        public Driver(string name, string company, string truckNumber, DateTime dateTime)
-        {
-            Name = name;
-            Company = company;
-            TruckNumber = truckNumber;
-            DateTime = dateTime;
-        }
-
-        public override string ToString()
-        {
-            return $"Driver: {Name}, Company: {Company}, Truck: {TruckNumber}, Date/Time: {DateTime}";
-        }
-    }
-    
 }
-// har försökt att lägga 
